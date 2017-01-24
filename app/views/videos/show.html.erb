@@ -14,13 +14,4 @@
 <%= @video['description'] %>
 <br>
 
-<% if (@video['subscription_required'] === true) %>
-  <% if session[:current_user_access_token] %>
-    <div id="zype_<%= @video['_id'] %>"></div><script src="https://player.zype.com/embed/<%= @video['_id'] %>.js?autoplay=true&access_token=<%= session[:current_user_access_token] %>" type="text/javascript"></script>
-  <% else %>
-    <h2>Subscription Required. Please Sign In or Subscribe</h2>
-    <%= render :partial => 'sessions/new' %>
-  <% end %>
-<% else %>
-  <div id="zype_<%= @video['_id'] %>"></div><script src="https://player.zype.com/embed/<%= @video['_id'] %>.js?autoplay=true&access_token=d77fc16692016b5be1b12c4cbe8ce04e9771bce5445a833923408cd9c5d1a156" type="text/javascript"></script>
-<% end %>
+<%= render partial: 'video', locals: { video: @video} %>
