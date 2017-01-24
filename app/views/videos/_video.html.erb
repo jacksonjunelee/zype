@@ -1,4 +1,4 @@
-<% if (video['subscription_required'] === false) %>
+<% if (video['subscription_required'] === true) %>
   <% if session[:current_user_access_token] %>
     <div id="zype_<%= video['_id'] %>"></div><script src="https://player.zype.com/embed/<%= video['_id'] %>.js?autoplay=true&access_token=<%= session[:current_user_access_token] %>" type="text/javascript"></script>
   <% else %>
@@ -6,5 +6,5 @@
     <%= render :partial => 'sessions/new' %>
   <% end %>
 <% else %>
-  <div id="zype_<%= video['_id'] %>"></div><script src="https://player.zype.com/embed/<%= video['_id'] %>.js?autoplay=true&app_key=XWny5j0V89yb1uZu6SI_D95EADV5FzBYldE9Ny0_q0GOzcWLiruPyhN-f2Pcyohf" type="text/javascript"></script>
+  <div id="zype_<%= video['_id'] %>"></div><script src="https://player.zype.com/embed/<%= video['_id'] %>.js?autoplay=true&app_key=<%= ENV['zype_app_key'] %>" type="text/javascript"></script>
 <% end %>
