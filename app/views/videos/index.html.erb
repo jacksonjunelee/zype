@@ -1,0 +1,13 @@
+<h1 id="title">Zype Video List</h1>
+<table style="width:100%">
+  <tr>
+    <th><h2>Title</h2></th>
+    <th><h2>Image</h2></th>
+  </tr>
+  <% @videos.each do |video| %>
+   <tr>
+     <th><%= link_to video['title'], {action: 'show', controller: 'videos', id: video["_id"]}%></th>
+    <th><%= link_to image_tag(video['thumbnails'][1]['url']), {action: 'show', controller: 'videos', id: video["_id"]}%></th>
+  </tr>
+  <% end %>
+</table>

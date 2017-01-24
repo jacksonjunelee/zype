@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Zype</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div style="float:right">
+      <% if session[:current_user_access_token] %>
+        Welcome |
+        <%= link_to "Log Out", sessions_path, method: :delete %>
+      <% end %>
+    </div>
+    <br>
+
+    <% if flash[:errors] %>
+      <%= render partial: 'layouts/errors', locals: { errors: flash[:errors]} %>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
